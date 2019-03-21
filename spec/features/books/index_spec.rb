@@ -14,12 +14,12 @@ RSpec.describe "user_index", type: :feature do
   it "user_can_see_all_books" do
 
     visit "/books"
-
+# binding.pry
     expect(page).to have_content(@book_1.title)
     expect(page).to have_content(@book_1.number_of_pages)
-    expect(page).to have_content(@book_1.authors.name)
+    expect(page).to have_content(@book_1.authors.first.name)
     expect(page).to have_content(@book_1.publish_year)
-    expect(page).to have_content(@book_1.cover)
-    expect(page).to have_content(@book_4.authors.name)
+    expect(page).to have_css("img[src*='#{@book_1.cover}']")
+    expect(page).to have_content(@book_4.authors.first.name)
   end
 end
