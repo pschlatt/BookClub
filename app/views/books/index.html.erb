@@ -3,8 +3,8 @@
 <% @books.each do |book| %>
 
   <h2><%= book.title %></h2>
-  <p><%= book.authors.first.name %></p>
-  <p><%= book.number_of_pages %></p>
-  <p><%= book.publish_year %></p>
+  <p>Authors: <%= book.authors.first.name %></p>
+  <p>Pages: <%= book.number_of_pages %></p>
+  <p>Year: <%= book.publish_year %></p>
   <img src="<%=book.cover%>">
 <% end %>

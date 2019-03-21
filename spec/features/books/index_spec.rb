@@ -11,10 +11,11 @@ RSpec.describe "user_index", type: :feature do
     @book_4 = Book.create(title: "The Talisman", number_of_pages: 921, publish_year: 1984, cover: "https://images-na.ssl-images-amazon.com/images/I/81muDiETxIL.jpg")
     @author_4 = @book_4.authors.create(name: "Peter Straub, Stephen King")
   end
+
   it "user_can_see_all_books" do
 
-    visit "/books"
-# binding.pry
+    visit books_path
+
     expect(page).to have_content(@book_1.title)
     expect(page).to have_content(@book_1.number_of_pages)
     expect(page).to have_content(@book_1.authors.first.name)
