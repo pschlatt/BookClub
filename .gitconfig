@@ -1,0 +1,5 @@
+[commit]
+  template = ~/.gitmessage
+
+[core]
+  editor = atom --wait
