@@ -1,3 +1,8 @@
+BookAuthor.destroy_all
+Review.destroy_all
+Book.destroy_all
+Author.destroy_all
+
 @default_cover = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd3cgsv8lMoNU4g8dDN1hUqKlXAR3DTITUd5rl1tMuYds_wAP6"
 @cover_1 = "https://images.penguinrandomhouse.com/cover/9780679645689"
 @cover_2 = "https://i.pinimg.com/originals/2e/42/d2/2e42d25ee87ad6bb5f512bd86e099233.jpg"
