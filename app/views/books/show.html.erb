@@ -1,0 +1,13 @@
+<h1><%=@book.title%></h1>
+<p>Author(s): <%= @book.authors.first.name %></p>
+<p>Pages: <%= @book.number_of_pages %></p>
+<p>Year: <%= @book.publish_year %></p>
+<img src="<%= @book.cover %>">
+
+<h2>Reviews</h2>
+<%@book.reviews.each do |review| %>
+<p><%= review.title %></p>
+<p>User: <%= review.username %></p>
+<p>Rating: <%= review.rating %></p>
+<p><%= review.review_text %></p>
+<% end  %>
