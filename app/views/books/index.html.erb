@@ -1,10 +1,12 @@
 <h1>All Books </h1>
 
 <% @books.each do |book| %>
-
-  <h2><%= book.title %></h2>
-  <p>Authors: <%= book.authors.first.name %></p>
-  <p>Pages: <%= book.number_of_pages %></p>
-  <p>Year: <%= book.publish_year %></p>
-  <img src="<%=book.cover%>">
+  <section id="book-<% book.id %>">
+    <h2><%= book.title %></h2>
+  
+    <p>Authors: <%= book.authors.first.name %></p>
+    <p>Pages: <%= book.number_of_pages %></p>
+    <p>Year: <%= book.publish_year %></p>
+    <img src="<%=book.cover%>">
+  </section>
 <% end %>
