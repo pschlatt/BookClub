@@ -20,17 +20,15 @@ RSpec.describe "user_index", type: :feature do
     @review_3 = @book_2.reviews.create(title: "Review Title 3", rating: 4, review_text: "This is the 3rd review.", username: "UserYou3")
 
 
-
   end
 
   it 'user_can_see_all_books' do
 
     visit books_path
 
-    within "#book-#{@book_1.id}"
+    within "#book-#{@book_1.id}" do
       expect(page).to have_content(@book_1.title)
       expect(page).to have_content(@book_1.number_of_pages)
-
     end
   end
 
@@ -38,20 +36,17 @@ RSpec.describe "user_index", type: :feature do
 
     visit books_path
 
-    within "#book-#{@book_2.id}"
-      expect(page).to have_content("Average Rating: #{@book_2.average_rating}")
+    within "#book-#{@book_2.id}" do
+      expect(page).to have_content("Average Rating: #{@book_2.average_rating.round(2)}")
       expect(page).to have_content("Total Reviews: #{@book_2.total_reviews}")
-
     end
 
-    within "#book-#{@book_1.id}"
+    within "#book-#{@book_1.id}" do
       expect(page).to have_content(@book_1.title)
       expect(page).to have_content(@book_1.number_of_pages)
       expect(page).to have_content(@book_1.authors.first.name)
       expect(page).to have_content(@book_1.publish_year)
       expect(page).to have_css("img[src*='#{@book_1.cover}']")
     end
-
   end
-
 end
