@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "user_index", type: :feature do
+RSpec.describe "welcome_index", type: :feature do
   before :each do
     @book_1 = Book.create(title: "In Search Of Lost Time", number_of_pages: 4215, publish_year: 1913, cover: "https://images.penguinrandomhouse.com/cover/9780679645689")
     @author_1 = @book_1.authors.create(name: "Marcel Proust")
@@ -12,43 +12,41 @@ RSpec.describe "user_index", type: :feature do
     @author_4 = @book_4.authors.create(name: "Peter Straub, Stephen King")
   end
 
-  it "user_can_see_all_books" do
+  it "User is linked to Book Index" do
 
-    visit books_path
+    visit '/'
+
+    click_on "Book Index"
 
     expect(page).to have_content(@book_1.title)
     expect(page).to have_content(@book_1.number_of_pages)
     expect(page).to have_content(@book_1.authors.first.name)
     expect(page).to have_content(@book_1.publish_year)
-    expect(page).to have_css("img[src*='#{@book_1.cover}']")
+
+
+
+    expect(page).to have_content(@book_2.title)
+    expect(page).to have_content(@book_2.number_of_pages)
+    expect(page).to have_content(@book_2.authors.first.name)
+    expect(page).to have_content(@book_2.publish_year)
+
+
+
+
+    expect(page).to have_content(@book_3.title)
+    expect(page).to have_content(@book_3.number_of_pages)
+    expect(page).to have_content(@book_3.authors.first.name)
+    expect(page).to have_content(@book_3.publish_year)
+
+
+
+
+    expect(page).to have_content(@book_4.title)
+    expect(page).to have_content(@book_4.number_of_pages)
     expect(page).to have_content(@book_4.authors.first.name)
-  end
-
-  it 'user can click title of book and go to showpage for book 1' do
-    visit books_path
-
-    click_on @book_1.title
-
-    expect(page).to have_content 'In Search Of Lost Time'
-    expect(page).to have_content 'Author(s): Marcel Proust'
-    expect(page).to have_css("img[src*='#{@book_1.cover}']")
+    expect(page).to have_content(@book_4.publish_year)
 
 
   end
-
-  it 'user can click title of book and go to showpage for book 1' do
-    visit books_path
-
-    click_on @book_2.title
-
-    expect(page).to have_content 'Don Quixote'
-    expect(page).to have_content 'Author(s): Miguel de Cervantes'
-    expect(page).to have_css("img[src*='#{@book_2.cover}']")
-
-
-  end
-
-
-
 
 end

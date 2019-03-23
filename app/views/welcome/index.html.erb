@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Book Club</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,13 +18,3 @@
     </ul>
   </div>
 </nav>
-<h1>All Books </h1>
-
-<% @books.each do |book| %>
-
-  <h2><%= link_to book.title, book_path(book) %></h2>
-  <p>Authors: <%= book.authors.first.name %></p>
-  <p>Pages: <%= book.number_of_pages %></p>
-  <p>Year: <%= book.publish_year %></p>
-  <img src="<%=book.cover%>">
-<% end %>
