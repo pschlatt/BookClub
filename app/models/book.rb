@@ -7,5 +7,11 @@ class Book < ApplicationRecord
   has_many :authors, through: :book_authors
   has_many :reviews
 
-  
+  def average_rating
+    reviews.average(:rating) || 0
+  end
+
+  def total_reviews
+    reviews.count
+  end
 end
