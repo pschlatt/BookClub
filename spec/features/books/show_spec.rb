@@ -33,4 +33,10 @@ RSpec.describe 'book show page', type: :feature do
     expect(page).to have_content(@review_3.rating)
     expect(page).to have_content(@review_1.review_text)
   end
+
+  
+
+
+
+
 end
