@@ -77,9 +77,10 @@ RSpec.describe "user_index", type: :feature do
 save_and_open_page
     within "#stats-bar" do
       expect(page.all('li')[0]).to have_content(@book_1.title)
-      # expect(page.all('li')[0]).to have_content(@review_3.rating) #@review_3
-      expect(page.all('li')[1]).to have_content(@book_2.title) #review_7
-      expect(page.all('li')[2]).to have_content(@book_3.title) #review_8
+      expect(page.all('li')[0]).to have_content(@book_1.max_rating)
+      expect(page.all('li')[1]).to have_content(@book_2.title)
+      expect(page.all('li')[1]).to have_content(@book_2.max_rating)
+      expect(page.all('li')[2]).to have_content(@book_3.title)
     end
   end
 end
