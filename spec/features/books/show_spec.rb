@@ -56,7 +56,6 @@ RSpec.describe 'book show page', type: :feature do
     end
 
     within '#worst-reviews-one-book' do
-      save_and_open_page
       expect(page.all('li')[0]).to have_content(@review_4.title)
       expect(page.all('li')[1]).to have_content(@review_4.rating)
       expect(page.all('li')[2]).to have_content(@review_4.username)
