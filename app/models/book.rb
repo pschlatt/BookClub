@@ -30,10 +30,10 @@ class Book < ApplicationRecord
   def total_reviews
     reviews.count
   end
-  
-  # def top_reviews
-  #   reviews.order(rating: :desc).limit(3)
-  # end
+
+  def top_reviews
+    reviews.order(rating: :desc).limit(3)
+  end
 
   # def worst_reviews
   #   reviews.order(:rating).limit(3)
