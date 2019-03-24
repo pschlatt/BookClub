@@ -30,5 +30,9 @@ RSpec.describe Book, type: :model do
     it "#total_reviews" do
       expect(@book_1.total_reviews).to eq(3)
     end
+
+    it "#top_reviews" do
+      expect(@book_1.top_reviews).to eq()
+    end
   end
 end

@@ -70,11 +70,5 @@ RSpec.describe "user_index", type: :feature do
     expect(page).to have_content 'Don Quixote'
     expect(page).to have_content 'Author(s): Miguel de Cervantes'
     expect(page).to have_css("img[src*='#{@book_2.cover}']")
-
-
   end
-
-
-
-
 end
