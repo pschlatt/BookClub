@@ -21,6 +21,7 @@ RSpec.describe "user_index", type: :feature do
     @review_7 = @book_2.reviews.create(title: "Review Title 7", rating: 4, review_text: "This is the 3rd review.", username: "UserYou1")
 
     @review_8 = @book_3.reviews.create(title: "Review Title 8", rating: 3, review_text: "This is the 1st review.", username: "UserYou1")
+    @review_9 = @book_3.reviews.create(title: "Review Title 8", rating: 3, review_text: "This is the 1st review.", username: "UserYou1")
   end
 
   it 'user_can_see_all_books' do
@@ -74,13 +75,28 @@ RSpec.describe "user_index", type: :feature do
   it 'user can see statistics for top three rated books' do
 
     visit books_path
-save_and_open_page
-    within "#stats-bar" do
+
+    within "#stats-bar-highest" do
       expect(page.all('li')[0]).to have_content(@book_1.title)
       expect(page.all('li')[0]).to have_content(@book_1.max_rating)
       expect(page.all('li')[1]).to have_content(@book_2.title)
       expect(page.all('li')[1]).to have_content(@book_2.max_rating)
       expect(page.all('li')[2]).to have_content(@book_3.title)
+      expect(page.all('li')[2]).to have_content(@book_3.max_rating)
+    end
+  end
+
+  it 'user can see statistics for worst three rated books' do
+
+    visit books_path
+save_and_open_page
+    within "#stats-bar-worst" do
+      expect(page.all('li')[0]).to have_content(@book_4.title)
+      expect(page.all('li')[0]).to have_content(@book_4.min_rating)
+      expect(page.all('li')[1]).to have_content(@book_1.title)
+      expect(page.all('li')[1]).to have_content(@book_1.min_rating)
+      expect(page.all('li')[2]).to have_content(@book_2.title)
+      expect(page.all('li')[2]).to have_content(@book_2.min_rating)
     end
   end
 end

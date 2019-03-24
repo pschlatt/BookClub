@@ -1,10 +1,18 @@
 <h1>All Books</h1>
 
-<div id="stats-bar">
-  <% @top_books_list.each do |book| %>
-    <li><%=book.title%> Highest Rating: <%=book.max_rating%></li>
-  <% end %>
-</div>
+<section class="stats-bar">
+  <div id="stats-bar-highest">
+    <% @top_books_list.each do |book| %>
+      <li><%=book.title%> Highest Rating: <%=book.max_rating%></li>
+    <% end %>
+  </div>
+
+  <div id="stats-bar-worst">
+    <% @worst_books_list.each do |book| %>
+      <li><%=book.title%> Worst Rating: <%=book.min_rating%></li>
+    <% end %>
+  </div>
+</section>
 
 <% @books.each do |book| %>
   <section id="book-<%=book.id%>">

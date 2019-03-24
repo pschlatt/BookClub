@@ -29,6 +29,11 @@ RSpec.describe Book, type: :model do
       #@book_1 has two top ratings, but should only display one
       expect(Book.top_books).to eq([@book_1, @book_4, @book_2])
     end
+
+    it ".worst_books" do
+      #@book_1 has two top ratings, but should only display one
+      expect(Book.worst_books).to eq([@book_1, @book_3, @book_2])
+    end
   end
 
   describe "Instance Methods" do
@@ -55,6 +60,10 @@ RSpec.describe Book, type: :model do
 
     it "#max_rating" do
       expect(@book_1.max_rating).to eq(5)
+    end
+
+    it "#min_rating" do
+      expect(@book_1.min_rating).to eq(1)
     end
   end
 end

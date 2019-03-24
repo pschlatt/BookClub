@@ -15,6 +15,14 @@ class Book < ApplicationRecord
     books_by_rating.reverse.first(3)
   end
 
+  def self.worst_books
+    books = Book.all
+    books_by_rating = books.sort_by do |book|
+      book.min_rating
+    end
+    books_by_rating.first(3)
+  end
+
   def average_rating
     reviews.average(:rating) || 0
   end
@@ -25,5 +33,9 @@ class Book < ApplicationRecord
 
   def max_rating
     reviews.maximum(:rating) || 0
+  end
+
+  def min_rating
+    reviews.minimum(:rating) || 0
   end
 end
