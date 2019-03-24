@@ -39,16 +39,17 @@ RSpec.describe 'book show page', type: :feature do
 
     visit book_path(@book_1)
 
-    within '#top_three_reviews' do
+    within '#top-reviews-one-book' do
+      save_and_open_page
       expect(page.all('li')[0]).to have_content(@review_1.title)
-      expect(page.all('li')[0]).to have_content(@review_1.rating)
-      expect(page.all('li')[0]).to have_content(@review_1.user)
-      expect(page.all('li')[1]).to have_content(@review_3.title)
-      expect(page.all('li')[1]).to have_content(@review_3.rating)
-      expect(page.all('li')[1]).to have_content(@review_3.user)
-      expect(page.all('li')[2]).to have_content(@review_2.title)
-      expect(page.all('li')[2]).to have_content(@review_2.rating)
-      expect(page.all('li')[2]).to have_content(@review_2.user)
+      expect(page.all('li')[1]).to have_content(@review_1.rating)
+      expect(page.all('li')[2]).to have_content(@review_1.username)
+      expect(page.all('li')[3]).to have_content(@review_3.title)
+      expect(page.all('li')[4]).to have_content(@review_3.rating)
+      expect(page.all('li')[5]).to have_content(@review_3.username)
+      expect(page.all('li')[6]).to have_content(@review_2.title)
+      expect(page.all('li')[7]).to have_content(@review_2.rating)
+      expect(page.all('li')[8]).to have_content(@review_2.username)
     end
   end
 

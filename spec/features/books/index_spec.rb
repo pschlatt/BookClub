@@ -70,9 +70,7 @@ RSpec.describe "user_index", type: :feature do
     expect(page).to have_content 'Don Quixote'
     expect(page).to have_content 'Author(s): Miguel de Cervantes'
     expect(page).to have_css("img[src*='#{@book_2.cover}']")
-<<<<<<< HEAD
-  end
-=======
+
   end
 
   it 'user can see statistics for top three rated books' do
@@ -116,5 +114,4 @@ RSpec.describe "user_index", type: :feature do
       expect(page.all('li')[2]).to have_content("2")
     end
   end
->>>>>>> user_story_9
 end
