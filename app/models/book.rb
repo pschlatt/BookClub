@@ -7,11 +7,23 @@ class Book < ApplicationRecord
   has_many :authors, through: :book_authors
   has_many :reviews
 
+  def self.top_books
+    books = Book.all
+    books_by_rating = books.sort_by do |book|
+      book.max_rating
+    end
+    books_by_rating.reverse.first(3)
+  end
+
   def average_rating
     reviews.average(:rating) || 0
   end
 
   def total_reviews
     reviews.count
+  end
+
+  def max_rating
+    reviews.maximum(:rating) || 0
   end
 end
