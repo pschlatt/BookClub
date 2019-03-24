@@ -7,7 +7,17 @@
 <section class="book-stats">
   <h2>Book Stats</h2>
   <div id="top-reviews-one-book">
+    <h4>Top 3 Reviews</h4>
     <% @book.top_reviews.each do |book_review| %>
+    <li>Title: <%= book_review.title %></li>
+    <li>Rating: <%= book_review.rating %></li>
+    <li>Reviewer: <%= book_review.username %></li>
+    <% end %>
+  </div>
+
+  <div id="worst-reviews-one-book">
+    <h4>Worst 3 Reviews</h4>
+    <% @book.worst_reviews.each do |book_review| %>
     <li>Title: <%= book_review.title %></li>
     <li>Rating: <%= book_review.rating %></li>
     <li>Reviewer: <%= book_review.username %></li>

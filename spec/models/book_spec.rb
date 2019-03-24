@@ -71,5 +71,9 @@ RSpec.describe Book, type: :model do
       expect(@book_1.top_reviews).to eq([@book_1.reviews[1], @book_1.reviews[0], @book_1.reviews[3]])
     end
 
+    it "#worst_reviews" do
+      expect(@book_1.worst_reviews).to eq([@book_1.reviews[2], @book_1.reviews[3], @book_1.reviews[0]])
+    end
+
   end
 end

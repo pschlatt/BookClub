@@ -35,9 +35,9 @@ class Book < ApplicationRecord
     reviews.order(rating: :desc).limit(3)
   end
 
-  # def worst_reviews
-  #   reviews.order(:rating).limit(3)
-  # end
+  def worst_reviews
+    reviews.order(:rating).limit(3)
+  end
 
   def max_rating
     reviews.maximum(:rating) || 0
