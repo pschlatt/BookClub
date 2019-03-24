@@ -39,6 +39,10 @@ RSpec.describe 'book show page', type: :feature do
 
     visit book_path(@book_1)
 
+    within "#overall-rating" do
+      expect(page).to have_content(@book_1.average_rating)
+    end
+
     within '#top-reviews-one-book' do
       expect(page.all('li')[0]).to have_content(@review_1.title)
       expect(page.all('li')[1]).to have_content(@review_1.rating)
