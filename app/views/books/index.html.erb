@@ -12,6 +12,12 @@
       <li><%=book.title%> Worst Rating: <%=book.min_rating%></li>
     <% end %>
   </div>
+
+  <div id="top-three-users-and-review-count">
+    <% @top_reviewers_list.each do |reviewer| %>
+      <li>Reviewer: <%=reviewer[0]%> Total Reviews: <%=reviewer[1]%></li>
+    <% end %>
+  </div>
 </section>
 
 <% @books.each do |book| %>
