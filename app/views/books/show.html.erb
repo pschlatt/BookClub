@@ -1,9 +1,3 @@
-<h1><%=@book.title%></h1>
-<p>Author(s): <%= @book.authors.first.name %></p>
-<p>Pages: <%= @book.number_of_pages %></p>
-<p>Year: <%= @book.publish_year %></p>
-<img src="<%= @book.cover %>">
-
 <section class="book-stats">
   <h2>Book Stats</h2>
 
@@ -29,6 +23,12 @@
       <% end %>
     </div>
 </section>
+
+<h1><%=@book.title%></h1>
+<p>Author(s): <%= @book.authors.first.name %></p>
+<p>Pages: <%= @book.number_of_pages %></p>
+<p>Year: <%= @book.publish_year %></p>
+<img src="<%= @book.cover %>">
 
 <h2>Reviews</h2>
 <%@book.reviews.each do |review| %>
