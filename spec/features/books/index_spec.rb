@@ -46,7 +46,7 @@ RSpec.describe "user_index", type: :feature do
     within "#book-#{@book_1.id}" do
       expect(page).to have_content(@book_1.title)
       expect(page).to have_content(@book_1.number_of_pages)
-      expect(page).to have_content(@book_1.authors.first.name)
+      expect(page).to have_content("Marcel Proust")
       expect(page).to have_content(@book_1.publish_year)
       expect(page).to have_css("img[src*='#{@book_1.cover}']")
     end

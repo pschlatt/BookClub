@@ -7,7 +7,6 @@ class BooksController < ApplicationController
     @top_books_list = Book.top_books
     @worst_books_list = Book.worst_books
     @top_reviewers_list = Review.top_reviewers
-    @sort_by_ascending_pages = Book.sort_by_ascending_pages
 
     if params.has_key?("sort")
       if params[:sort] == "average rating in ascending order"
@@ -23,9 +22,7 @@ class BooksController < ApplicationController
       elsif params[:sort] == "number of reviews in descending order"
         @books = Book.left_outer_joins(:reviews).group(:id).order("count(reviews) DESC")
       end
-
     end
-
   end
 
   def show
