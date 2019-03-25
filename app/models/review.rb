@@ -15,4 +15,6 @@ class Review < ApplicationRecord
     end
     reviewer_count.sort.first(3)
   end
+
+  
 end

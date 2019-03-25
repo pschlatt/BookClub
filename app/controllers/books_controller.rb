@@ -10,10 +10,18 @@ class BooksController < ApplicationController
     @sort_by_ascending_pages = Book.sort_by_ascending_pages
 
     if params.has_key?("sort")
-      if params[:sort] == "number of pages in ascending order"
+      if params[:sort] == "average rating in ascending order"
+        @books = Book.left_outer_joins(:reviews).group(:id).order("avg(rating) ASC NULLS LAST")
+      elsif params[:sort] == "average rating in descending order"
+        @books = Book.left_outer_joins(:reviews).group(:id).order("avg(rating) DESC NULLS LAST")
+      elsif params[:sort] == "number of pages in ascending order"
         @books = Book.order(:number_of_pages)
-      elsif params[:sort] == "average rating in ascending order"
-        @books = Book.average_rating
+      elsif params[:sort] == "number of pages in descending order"
+        @books = Book.order(number_of_pages: :DESC)
+      elsif params[:sort] == "number of reviews in ascending order"
+        @books = Book.left_outer_joins(:reviews).group(:id).order("count(reviews)")
+      elsif params[:sort] == "number of reviews in descending order"
+        @books = Book.left_outer_joins(:reviews).group(:id).order("count(reviews) DESC")
       end
 
     end
