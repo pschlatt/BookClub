@@ -56,7 +56,8 @@
     <p>Average Rating: <%= book.average_rating.round(2)%></p>
     <p>Total Reviews: <%= book.total_reviews %></p>
 
-    <p>Authors: </p>
+
+    <p>Author(s): <%=book.authors.first.name%></p>
     <p>Pages: <%= book.number_of_pages %></p>
     <p>Year: <%= book.publish_year %></p>
     <img src="<%=book.cover%>">

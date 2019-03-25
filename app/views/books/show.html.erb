@@ -25,7 +25,10 @@
 </section>
 
 <h1><%=@book.title%></h1>
-<p>Author(s): <%= @book.authors.name%> </p>
+
+<p>Author(s): <% @book.authors.each do |author| %>
+ <%= author.name %> </p> 
+ <% end %>
 <p>Pages: <%= @book.number_of_pages %></p>
 <p>Year: <%= @book.publish_year %></p>
 <img src="<%= @book.cover %>">

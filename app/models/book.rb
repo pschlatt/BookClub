@@ -24,7 +24,7 @@ class Book < ApplicationRecord
   end
 
   def self.sort_by_ascending_pages
-    @selection = order(number_of_pages: :ASC)
+    order(number_of_pages: :ASC)
   end
 
   def average_rating
