@@ -27,6 +27,10 @@ class Book < ApplicationRecord
     order(number_of_pages: :ASC)
   end
 
+  def self.sort_by_descending_pages
+    order(number_of_pages: :DESC)
+  end
+
   def average_rating
     reviews.average(:rating) || 0
   end

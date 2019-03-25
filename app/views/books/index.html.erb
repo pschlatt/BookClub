@@ -21,7 +21,7 @@
   </div>
 
   <section>
-    <h2>Sort Books By:</h2>
+    <h2>Sort by:</h2>
     <form action="/books" method="get">
       <input id="sort" type="submit" name="sort" value="average rating in ascending order">
     </form>
@@ -50,7 +50,7 @@
   <input type="button" name="test" value="number of reviews in ascending order" onclick="">
   <input type="button" name="test" value="number of reviews in descending order" onclick=""> -->
 
-<% @selection.each do |book| %>
+<% @books.each do |book| %>
   <section id="book-<%=book.id%>">
     <h2><%= link_to book.title, book_path(book) %></h2>
     <p>Average Rating: <%= book.average_rating.round(2)%></p>

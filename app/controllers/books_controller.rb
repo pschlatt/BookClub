@@ -1,12 +1,23 @@
 class BooksController < ApplicationController
 
+
+
   def index
     @books = Book.all
     @top_books_list = Book.top_books
     @worst_books_list = Book.worst_books
     @top_reviewers_list = Review.top_reviewers
-    @sort_by_ascending_pages = Book.order(number_of_pages: :ASC)
-    @selection = @books
+    @sort_by_ascending_pages = Book.sort_by_ascending_pages
+
+    if params.has_key?("sort")
+      if params[:sort] == "number of pages in ascending order"
+        @books = Book.order(:number_of_pages)
+      elsif params[:sort] == "average rating in ascending order"
+        @books = Book.average_rating
+      end
+
+    end
+
   end
 
   def show
@@ -38,5 +49,8 @@ class BooksController < ApplicationController
   def author_params
     params.permit(:authors)
   end
+
+
+
 
 end
