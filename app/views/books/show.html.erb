@@ -1,3 +1,29 @@
+<section class="book-stats">
+  <h2>Book Stats</h2>
+
+    <div id="overall-rating">
+      <h4>Overall Average Rating: <%= @book.average_rating %></h4>
+    </div>
+
+    <div id="top-reviews-one-book">
+      <h4>Top 3 Reviews</h4>
+      <% @book.top_reviews.each do |book_review| %>
+      <li>Title: <%= book_review.title %></li>
+      <li>Rating: <%= book_review.rating %></li>
+      <li>Reviewer: <%= book_review.username %></li>
+      <% end %>
+    </div>
+
+    <div id="worst-reviews-one-book">
+      <h4>Worst 3 Reviews</h4>
+      <% @book.worst_reviews.each do |book_review| %>
+      <li>Title: <%= book_review.title %></li>
+      <li>Rating: <%= book_review.rating %></li>
+      <li>Reviewer: <%= book_review.username %></li>
+      <% end %>
+    </div>
+</section>
+
 <h1><%=@book.title%></h1>
 <p>Author(s): <%= @book.authors.first.name %></p>
 <p>Pages: <%= @book.number_of_pages %></p>
@@ -6,8 +32,9 @@
 
 <h2>Reviews</h2>
 <%@book.reviews.each do |review| %>
-<p><%= review.title %></p>
-<p>User: <%= review.username %></p>
+<p>Review: </p>
+<p>Title: <%= review.title %></p>
+<p>Reviewer: <%= review.username %></p>
 <p>Rating: <%= review.rating %></p>
 <p><%= review.review_text %></p>
 <% end  %>

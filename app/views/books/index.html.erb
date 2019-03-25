@@ -1,8 +1,24 @@
+<h1>All Books</h1>
 
+<section class="stats-bar">
+  <div id="stats-bar-highest">
+    <% @top_books_list.each do |book| %>
+      <li><%=book.title%> Highest Rating: <%=book.max_rating%></li>
+    <% end %>
+  </div>
 
+  <div id="stats-bar-worst">
+    <% @worst_books_list.each do |book| %>
+      <li><%=book.title%> Worst Rating: <%=book.min_rating%></li>
+    <% end %>
+  </div>
 
-
-<h1>All Books </h1>
+  <div id="top-three-users-and-review-count">
+    <% @top_reviewers_list.each do |reviewer| %>
+      <li>Reviewer: <%=reviewer[0]%> Total Reviews: <%=reviewer[1]%></li>
+    <% end %>
+  </div>
+</section>
 
 <% @books.each do |book| %>
   <section id="book-<%=book.id%>">
@@ -10,11 +26,9 @@
     <p>Average Rating: <%= book.average_rating.round(2)%></p>
     <p>Total Reviews: <%= book.total_reviews %></p>
 
-
-
-  <p>Authors: <%= book.authors.first.name %></p>
-  <p>Pages: <%= book.number_of_pages %></p>
-  <p>Year: <%= book.publish_year %></p>
-  <img src="<%=book.cover%>">
-
+    <p>Authors: <%= book.authors.first.name %></p>
+    <p>Pages: <%= book.number_of_pages %></p>
+    <p>Year: <%= book.publish_year %></p>
+    <img src="<%=book.cover%>">
+  </section>
 <% end %>

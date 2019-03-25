@@ -13,13 +13,15 @@ RSpec.describe "user_index", type: :feature do
 
     @review_1 = @book_1.reviews.create(title: "Review Title 1", rating: 1, review_text: "This is the 1st review.", username: "UserYou1")
     @review_2 = @book_1.reviews.create(title: "Review Title 2", rating: 3, review_text: "This is the 2nd review.", username: "UserYou2")
-    @review_3 = @book_1.reviews.create(title: "Review Title 3", rating: 4, review_text: "This is the 3rd review.", username: "UserYou3")
+    @review_3 = @book_1.reviews.create(title: "Review Title 3", rating: 5, review_text: "This is the 3rd review.", username: "UserYou3")
+    @review_4 = @book_1.reviews.create(title: "Review Title 4", rating: 2, review_text: "This is the 4th review.", username: "UserYou4")
 
-    @review_1 = @book_2.reviews.create(title: "Review Title 1", rating: 1, review_text: "This is the 1st review.", username: "UserYou1")
-    @review_2 = @book_2.reviews.create(title: "Review Title 2", rating: 3, review_text: "This is the 2nd review.", username: "UserYou2")
-    @review_3 = @book_2.reviews.create(title: "Review Title 3", rating: 4, review_text: "This is the 3rd review.", username: "UserYou3")
+    @review_5 = @book_2.reviews.create(title: "Review Title 5", rating: 1, review_text: "This is the 1st review.", username: "UserYou3")
+    @review_6 = @book_2.reviews.create(title: "Review Title 6", rating: 3, review_text: "This is the 2nd review.", username: "UserYou2")
+    @review_7 = @book_2.reviews.create(title: "Review Title 7", rating: 4, review_text: "This is the 3rd review.", username: "UserYou1")
 
-
+    @review_8 = @book_3.reviews.create(title: "Review Title 8", rating: 3, review_text: "This is the 1st review.", username: "UserYou1")
+    @review_9 = @book_3.reviews.create(title: "Review Title 8", rating: 3, review_text: "This is the 1st review.", username: "UserYou2")
   end
 
   it 'user_can_see_all_books' do
@@ -58,8 +60,6 @@ RSpec.describe "user_index", type: :feature do
     expect(page).to have_content 'In Search Of Lost Time'
     expect(page).to have_content 'Author(s): Marcel Proust'
     expect(page).to have_css("img[src*='#{@book_1.cover}']")
-
-
   end
 
   it 'user can click title of book and go to showpage for book 1' do
@@ -71,10 +71,47 @@ RSpec.describe "user_index", type: :feature do
     expect(page).to have_content 'Author(s): Miguel de Cervantes'
     expect(page).to have_css("img[src*='#{@book_2.cover}']")
 
-
   end
 
+  it 'user can see statistics for top three rated books' do
 
+    visit books_path
 
+    within "#stats-bar-highest" do
+      expect(page.all('li')[0]).to have_content(@book_1.title)
+      expect(page.all('li')[0]).to have_content(@book_1.max_rating)
+      expect(page.all('li')[1]).to have_content(@book_2.title)
+      expect(page.all('li')[1]).to have_content(@book_2.max_rating)
+      expect(page.all('li')[2]).to have_content(@book_3.title)
+      expect(page.all('li')[2]).to have_content(@book_3.max_rating)
+    end
+  end
 
+  it 'user can see statistics for worst three rated books' do
+
+    visit books_path
+
+    within "#stats-bar-worst" do
+      expect(page.all('li')[0]).to have_content(@book_4.title)
+      expect(page.all('li')[0]).to have_content(@book_4.min_rating)
+      expect(page.all('li')[1]).to have_content(@book_1.title)
+      expect(page.all('li')[1]).to have_content(@book_1.min_rating)
+      expect(page.all('li')[2]).to have_content(@book_2.title)
+      expect(page.all('li')[2]).to have_content(@book_2.min_rating)
+    end
+  end
+
+  it 'user can see top three review users and their review count' do
+
+    visit books_path
+
+    within "#top-three-users-and-review-count" do
+      expect(page.all('li')[0]).to have_content("UserYou1")
+      expect(page.all('li')[0]).to have_content("3")
+      expect(page.all('li')[1]).to have_content("UserYou2")
+      expect(page.all('li')[1]).to have_content("3")
+      expect(page.all('li')[2]).to have_content("UserYou3")
+      expect(page.all('li')[2]).to have_content("2")
+    end
+  end
 end
