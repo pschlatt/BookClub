@@ -74,5 +74,12 @@ RSpec.describe Book, type: :model do
     it "#worst_reviews" do
       expect(@book_1.worst_reviews).to eq([@book_1.reviews[2], @book_1.reviews[3], @book_1.reviews[0]])
     end
+
+    it "#co_author" do
+      author_1 = Author.create(name: "Erin King")
+      author_2 = Author.create(name: "Noah Flintastical")
+      book_1 = Book.create(title: "Book_1", number_of_pages: 5, publish_year: 1900, cover: "https://images.penguinrandomhouse.com/cover/9780679645689", authors: [author_1, author_2])
+      expect(book_1.co_author(author_1)).to eq([author_2])
+    end
   end
 end

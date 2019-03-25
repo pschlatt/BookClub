@@ -57,7 +57,7 @@
     <p>Total Reviews: <%= book.total_reviews %></p>
     <% book.authors.each do |author| %>
       <p>Author(s):</p>
-      <ul> <%= author.name %> </ul>
+      <ul> <%= link_to author.name, author_path(author) %> </ul>
     <% end %>
     <p>Pages: <%= book.number_of_pages %></p>
     <p>Year: <%= book.publish_year %></p>

@@ -4,5 +4,7 @@ Rails.application.routes.draw do
     resources :authors, only:[:new, :create]
   end
 
+  resources :authors, only: [:show]
+
   root :to => "welcome#index"
 end

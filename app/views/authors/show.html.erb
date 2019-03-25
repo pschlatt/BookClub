@@ -1,0 +1,13 @@
+<h1><%= @author.name %></h1>
+
+<section id="author-books"
+  <% @author.books.each do |book| %>
+    <h4><%= book.title %></h4>
+    <% book.co_author(@author).each do |author| %>
+      <p><%= author.name %></p>
+    <% end %>
+    <p><%= book.number_of_pages %></p>
+    <p><%= book.publish_year %></p>
+    <img src="<%= book.cover %>">
+</section>
+  <% end %>

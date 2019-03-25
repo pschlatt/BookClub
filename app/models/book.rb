@@ -55,4 +55,8 @@ class Book < ApplicationRecord
     reviews.minimum(:rating) || 0
   end
 
+  def co_author(author)
+    authors.where.not(name: author.name)
+  end
+
 end
