@@ -1,0 +1,15 @@
+<%= form_for @book do |f| %>
+<p>
+  <%= f.label :title %>
+  <%= f.text_field :title, required: true %>
+  <%= f.label :number_of_pages %>
+  <%= f.text_field :number_of_pages, required: true %>
+  <%= f.label :publish_year %>
+  <%= f.text_field :publish_year, required: true %>
+</p>
+
+<p>
+  <%= f.submit %>
+</p>
+
+<% end %>

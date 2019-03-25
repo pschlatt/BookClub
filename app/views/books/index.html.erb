@@ -1,5 +1,6 @@
 <h1>All Books</h1>
 
+
 <section class="stats-bar">
   <div id="stats-bar-highest">
     <% @top_books_list.each do |book| %>
@@ -18,9 +19,32 @@
       <li>Reviewer: <%=reviewer[0]%> Total Reviews: <%=reviewer[1]%></li>
     <% end %>
   </div>
-</section>
 
-<% @books.each do |book| %>
+  <section>
+    <h2>Sort Books By:</h2>
+    <form action="/books" method="get">
+      <input id="sort" type="submit" name="sort" value="Most Pages">
+    </form>
+    <form action="/books" method="get">
+      <input id="sort" type="submit" name="sort" value="Fewest Pages">
+    </form>
+    <form action="/books" method="get">
+      <input id="sort" type="submit" name="sort" value="Most Reviews">
+    </form>
+    <form action="/books" method="get">
+      <input id="sort" type="submit" name="sort" value="Fewest Reviews">
+    </form>
+
+  </section>
+
+  <!-- <input type="button" name="test" value="average rating in ascending order" onclick="">
+  <input type="button" name="test" value="average rating in descending order" onclick="">
+  <input type="button" name="test" value="number of pages in ascending order" onclick="">
+  <input type="button" name="test" value="number of pages in descending order" onclick="">
+  <input type="button" name="test" value="number of reviews in ascending order" onclick="">
+  <input type="button" name="test" value="number of reviews in descending order" onclick=""> -->
+
+<% @selection.each do |book| %>
   <section id="book-<%=book.id%>">
     <h2><%= link_to book.title, book_path(book) %></h2>
     <p>Average Rating: <%= book.average_rating.round(2)%></p>
