@@ -6,7 +6,6 @@ class BooksController < ApplicationController
     @worst_books_list = Book.worst_books
     @top_reviewers_list = Review.top_reviewers
     @sort_by_ascending_pages = Book.order(number_of_pages: :ASC)
-    @selection = @books
   end
 
   def show
