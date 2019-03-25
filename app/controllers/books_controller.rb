@@ -1,11 +1,28 @@
 class BooksController < ApplicationController
 
+
+
   def index
     @books = Book.all
     @top_books_list = Book.top_books
     @worst_books_list = Book.worst_books
     @top_reviewers_list = Review.top_reviewers
-    @sort_by_ascending_pages = Book.order(number_of_pages: :ASC)
+
+    if params.has_key?("sort")
+      if params[:sort] == "average rating in ascending order"
+        @books = Book.left_outer_joins(:reviews).group(:id).order("avg(rating) ASC NULLS LAST")
+      elsif params[:sort] == "average rating in descending order"
+        @books = Book.left_outer_joins(:reviews).group(:id).order("avg(rating) DESC NULLS LAST")
+      elsif params[:sort] == "number of pages in ascending order"
+        @books = Book.order(:number_of_pages)
+      elsif params[:sort] == "number of pages in descending order"
+        @books = Book.order(number_of_pages: :DESC)
+      elsif params[:sort] == "number of reviews in ascending order"
+        @books = Book.left_outer_joins(:reviews).group(:id).order("count(reviews)")
+      elsif params[:sort] == "number of reviews in descending order"
+        @books = Book.left_outer_joins(:reviews).group(:id).order("count(reviews) DESC")
+      end
+    end
   end
 
   def show
@@ -37,5 +54,8 @@ class BooksController < ApplicationController
   def author_params
     params.permit(:authors)
   end
+
+
+
 
 end
