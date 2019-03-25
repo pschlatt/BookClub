@@ -1,0 +1,12 @@
+<h1><%= @author.name %></h1>
+
+<section id="author-books"
+  <% @author.books.each do |book| %>
+    <h4><%= book.title %></h4>
+    <p><%= book.number_of_pages %></p>
+    <p><%= book.publish_year %></p>
+    <img src="<%= book.cover %>">
+</section>
+  <% end %>
+
+  <!-- need to list extra authors -->
