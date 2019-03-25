@@ -12,10 +12,24 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @author = @book.authors
   end
 
   def new
     @book = Book.new
   end
+
+  def create
+
+    @book = Book.create(book_params)
+    @author = @book.authors.find_or_create_by(params[:authors_id])
+    redirect_to book_path(@book)
+  end
+
+  private
+
+  def book_params
+   params.require(:book).permit(:title,:authors,:number_of_pages,:publish_year)
+ end
 
 end

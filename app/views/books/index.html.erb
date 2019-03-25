@@ -23,16 +23,22 @@
   <section>
     <h2>Sort Books By:</h2>
     <form action="/books" method="get">
-      <input id="sort" type="submit" name="sort" value="Most Pages">
+      <input id="sort" type="submit" name="sort" value="average rating in ascending order">
     </form>
     <form action="/books" method="get">
-      <input id="sort" type="submit" name="sort" value="Fewest Pages">
+      <input id="sort" type="submit" name="sort" value="average rating in descending order">
     </form>
     <form action="/books" method="get">
-      <input id="sort" type="submit" name="sort" value="Most Reviews">
+      <input id="sort" type="submit" name="sort" value="number of pages in ascending order">
     </form>
     <form action="/books" method="get">
-      <input id="sort" type="submit" name="sort" value="Fewest Reviews">
+      <input id="sort" type="submit" name="sort" value="number of pages in descending order">
+    </form>
+    <form action="/books" method="get">
+      <input id="sort" type="submit" name="sort" value="number of reviews in ascending order">
+    </form>
+    <form action="/books" method="get">
+      <input id="sort" type="submit" name="sort" value="number of reviews in descending order">
     </form>
 
   </section>
@@ -50,7 +56,7 @@
     <p>Average Rating: <%= book.average_rating.round(2)%></p>
     <p>Total Reviews: <%= book.total_reviews %></p>
 
-    <p>Authors: <%= book.authors.first.name %></p>
+    <p>Authors: </p>
     <p>Pages: <%= book.number_of_pages %></p>
     <p>Year: <%= book.publish_year %></p>
     <img src="<%=book.cover%>">
