@@ -1,5 +1,6 @@
 <h1>All Books</h1>
 
+
 <section class="stats-bar">
   <div id="stats-bar-highest">
     <% @top_books_list.each do |book| %>
@@ -18,15 +19,44 @@
       <li>Reviewer: <%=reviewer[0]%> Total Reviews: <%=reviewer[1]%></li>
     <% end %>
   </div>
-</section>
 
-<% @books.each do |book| %>
+  <section>
+    <h2>Sort Books By:</h2>
+    <form action="/books" method="get">
+      <input id="sort" type="submit" name="sort" value="average rating in ascending order">
+    </form>
+    <form action="/books" method="get">
+      <input id="sort" type="submit" name="sort" value="average rating in descending order">
+    </form>
+    <form action="/books" method="get">
+      <input id="sort" type="submit" name="sort" value="number of pages in ascending order">
+    </form>
+    <form action="/books" method="get">
+      <input id="sort" type="submit" name="sort" value="number of pages in descending order">
+    </form>
+    <form action="/books" method="get">
+      <input id="sort" type="submit" name="sort" value="number of reviews in ascending order">
+    </form>
+    <form action="/books" method="get">
+      <input id="sort" type="submit" name="sort" value="number of reviews in descending order">
+    </form>
+
+  </section>
+
+  <!-- <input type="button" name="test" value="average rating in ascending order" onclick="">
+  <input type="button" name="test" value="average rating in descending order" onclick="">
+  <input type="button" name="test" value="number of pages in ascending order" onclick="">
+  <input type="button" name="test" value="number of pages in descending order" onclick="">
+  <input type="button" name="test" value="number of reviews in ascending order" onclick="">
+  <input type="button" name="test" value="number of reviews in descending order" onclick=""> -->
+
+<% @selection.each do |book| %>
   <section id="book-<%=book.id%>">
     <h2><%= link_to book.title, book_path(book) %></h2>
     <p>Average Rating: <%= book.average_rating.round(2)%></p>
     <p>Total Reviews: <%= book.total_reviews %></p>
 
-    <p>Authors: <%= book.authors.first.name %></p>
+    <p>Authors: </p>
     <p>Pages: <%= book.number_of_pages %></p>
     <p>Year: <%= book.publish_year %></p>
     <img src="<%=book.cover%>">
