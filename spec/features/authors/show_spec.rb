@@ -27,7 +27,6 @@ RSpec.describe "author showpage", type: :feature do
   it "shows a page with author information" do
 
     visit author_path(@author_1)
-    save_and_open_page
 
     expect(current_path).to eq(author_path(@author_1))
     expect(page).to have_content(@author_1.name)
