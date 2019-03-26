@@ -2,10 +2,11 @@
 
 <section id="author-books" >
   <% @author.books.each do |book| %>
-    <h4><%= book.title %></h4>
+
+    <h4><%=link_to book.title, book_path(book) %></h4>
 
     <% book.co_author(@author).each do |author| %>
-      <p>Co-author(s): <%= author.name %></p>
+      <p>Co-author(s): <%= link_to author.name, author_path(author) %></p>
     <% end %>
     <p>Page Count: <%= book.number_of_pages %></p>
     <p>Year: <%= book.publish_year %></p>
