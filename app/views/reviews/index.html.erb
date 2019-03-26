@@ -1,1 +1,11 @@
-<h1> <%= require 'pry';binding.pry @user %></h1>
+<h1> <%= @user_identifier %></h1>
+
+<p> <% @books.each do |book| %> </p>
+<p>Book Title: <%= book.title %> </p>
+<p> <% @reviews.each do |review| %> </p>
+<p>Review Title: <%= review.title %> </p>
+<p>Rating:  <%= review.rating %> </p>
+<p>Review Text: <%= review.review_text %> </p>
+<p> <%  %> </p>
+<% end %>
+<% end %>

@@ -14,10 +14,9 @@ class ReviewsController < ApplicationController
 
 
   def index
-
-    @user =  params[:review_id]
-
-
+    @user_identifier = Review.find(params["format"]).username
+    @reviews = Review.where(username: @user_identifier)
+    @books = Book.where(id: @reviews)
   end
 
   private

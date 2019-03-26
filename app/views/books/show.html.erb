@@ -15,7 +15,7 @@
       <% @book.top_reviews.each do |book_review| %>
       <li>Title: <%= book_review.title %></li>
       <li>Rating: <%= book_review.rating %></li>
-      <li>Reviewer: <%= book_review.username %></li>
+      <li>Reviewer: <%= link_to book_review.username, reviews_path(book_review) %></li>
       <% end %>
     </div>
 
@@ -24,7 +24,7 @@
       <% @book.worst_reviews.each do |book_review| %>
       <li>Title: <%= book_review.title %></li>
       <li>Rating: <%= book_review.rating %></li>
-      <li>Reviewer: <%= book_review.username %></li>
+      <li>Reviewer: <%= link_to book_review.username, reviews_path(book_review) %></li>
       <% end %>
     </div>
 </section>

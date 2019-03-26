@@ -16,5 +16,8 @@ class Review < ApplicationRecord
     reviewer_count.sort.first(3)
   end
 
-  
+  def self.reviews_by_user
+    select(:username)
+  end
+
 end
