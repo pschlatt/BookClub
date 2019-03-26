@@ -12,9 +12,19 @@ class ReviewsController < ApplicationController
     redirect_to book_path(@book)
   end
 
+
+  def index
+
+    @user =  params[:review_id]
+
+
+  end
+
   private
 
   def review_params
      params.require(:review).permit(:title,:username,:rating,:review_text)
   end
+
+
 end

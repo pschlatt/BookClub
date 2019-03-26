@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :authors, only: [:show]
 
+  resources :reviews, only:[:index]
+
 
   root :to => "welcome#index"
 end

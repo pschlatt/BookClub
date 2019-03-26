@@ -45,7 +45,7 @@
 <%@book.reviews.each do |review| %>
 <p>Review: </p>
 <p>Title: <%= review.title %></p>
-<p>Reviewer: <%= review.username %></p>
+<p>Reviewer: <%= link_to review.username, reviews_path(review) %></p>
 <p>Rating: <%= review.rating %></p>
 <p><%= review.review_text %></p>
 <% end  %>
