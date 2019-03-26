@@ -44,7 +44,7 @@ RSpec.describe "user_index", type: :feature do
     end
 
     within "#book-#{@book_1.id}" do
-      save_and_open_page
+      
       expect(page).to have_content(@book_1.title)
       expect(page).to have_content(@book_1.number_of_pages)
       expect(page).to have_content("Marcel Proust")
@@ -58,7 +58,7 @@ RSpec.describe "user_index", type: :feature do
 
     within "#book-#{@book_1.id}" do
       click_on @book_1.title
-    end 
+    end
 
     expect(page).to have_content 'In Search Of Lost Time'
     expect(page).to have_content 'Author(s): Marcel Proust'

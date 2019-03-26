@@ -5,8 +5,9 @@ Rails.application.routes.draw do
     resources :reviews, only:[:new, :create]
   end
 
-  resources :authors, only: [:show]
-
-
+  resources :authors, only: [:show, :destroy] do
+    resources :books, only: [:destroy]
+  end
+  
   root :to => "welcome#index"
 end
