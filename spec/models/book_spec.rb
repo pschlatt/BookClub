@@ -81,5 +81,13 @@ RSpec.describe Book, type: :model do
       book_1 = Book.create(title: "Book_1", number_of_pages: 5, publish_year: 1900, cover: "https://images.penguinrandomhouse.com/cover/9780679645689", authors: [author_1, author_2])
       expect(book_1.co_author(author_1)).to eq([author_2])
     end
+
+    it "#top_book_review" do
+      book_1 = Book.create(title: "Book_1", number_of_pages: 5, publish_year: 1900, cover: "https://images.penguinrandomhouse.com/cover/9780679645689")
+      review_1 = book_1.reviews.create(title: "Review Title 1", rating: 1, review_text: "This is the 1st review.", username: "UserYou1")
+      review_2 = book_1.reviews.create(title: "Review Title 2", rating: 3, review_text: "This is the 2nd review.", username: "UserYou2")
+
+      expect(book_1.top_book_review).to eq(review_2)
+    end
   end
 end

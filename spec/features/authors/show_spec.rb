@@ -10,12 +10,25 @@ RSpec.describe "author showpage", type: :feature do
     @book_4 = @author_1.books.create(title: "Book_4", number_of_pages: 500, publish_year: 1930, cover: "https://images-na.ssl-images-amazon.com/images/I/51vv75oglyL._SX326_BO1,204,203,200_.jpg")
     @book_5 = @author_1.books.create(title: "Book_5", number_of_pages: 100, publish_year: 1940, cover: "https://images-na.ssl-images-amazon.com/images/I/81vjde0JFHL.jpg")
     @book_1.authors << @author_2
+
+    @review_1 = @book_1.reviews.create(title: "Review Title 1", rating: 1, review_text: "This is the 1st review.", username: "UserYou1")
+    @review_2 = @book_1.reviews.create(title: "Review Title 2", rating: 3, review_text: "This is the 2nd review.", username: "UserYou2")
+    @review_3 = @book_2.reviews.create(title: "Review Title 5", rating: 1, review_text: "This is the 1st review.", username: "UserYou3")
+    @review_4 = @book_2.reviews.create(title: "Review Title 6", rating: 3, review_text: "This is the 2nd review.", username: "UserYou2")
+    @review_5 = @book_3.reviews.create(title: "Review Title 8", rating: 3, review_text: "This is the 1st review.", username: "UserYou1")
+    @review_6 = @book_3.reviews.create(title: "Review Title 8", rating: 3, review_text: "This is the 2nd review.", username: "UserYou2")
+    @review_7 = @book_4.reviews.create(title: "Review Title 3", rating: 5, review_text: "This is the 3rd review.", username: "UserYou3")
+    @review_8 = @book_4.reviews.create(title: "Review Title 4", rating: 2, review_text: "This is the 4th review.", username: "UserYou4")
+    @review_9 = @book_5.reviews.create(title: "Review Title 3", rating: 5, review_text: "This is the 3rd review.", username: "UserYou3")
+    @review_10 = @book_5.reviews.create(title: "Review Title 4", rating: 2, review_text: "This is the 4th review.", username: "UserYou4")
+
   end
 
   it "shows a page with author information" do
 
     visit author_path(@author_1)
-# save_and_open_page
+    save_and_open_page
+
     expect(current_path).to eq(author_path(@author_1))
     expect(page).to have_content(@author_1.name)
 
@@ -28,7 +41,17 @@ RSpec.describe "author showpage", type: :feature do
       expect(page).to have_css("img[src*='#{@book_1.cover}']")
     end
   end
-end
 
-# Each book should show a list of any other authors
-# (exclude this show page's author from that list)
+  it "shows the top review for each book" do
+
+    visit author_path(@author_1)
+
+    within "#author-books" do
+      within "#author-reviews" do
+        expect(page).to have_content(@review_2.title)
+        expect(page).to have_content(@review_2.rating)
+        expect(page).to have_content(@review_2.username)
+      end
+    end
+  end
+end
