@@ -1,7 +1,5 @@
 class BooksController < ApplicationController
 
-
-
   def index
     @books = Book.all
     @top_books_list = Book.top_books
@@ -40,22 +38,23 @@ class BooksController < ApplicationController
       author_params[:authors].split(',').each do |author_param|
         @book.authors.find_or_create_by(name: author_param.strip)
       end
-
     end
     redirect_to book_path(@book)
+  end
+
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to books_path
   end
 
   private
 
   def book_params
    params.require(:book).permit(:title,:number_of_pages,:publish_year)
- end
+  end
 
   def author_params
     params.permit(:authors)
   end
-
-
-
-
 end
