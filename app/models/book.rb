@@ -3,9 +3,9 @@ class Book < ApplicationRecord
                         :number_of_pages,
                         :publish_year
 
-  has_many :book_authors
+  has_many :book_authors, dependent: :destroy
   has_many :authors, through: :book_authors
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   def self.top_books
     books = Book.all
@@ -53,6 +53,10 @@ class Book < ApplicationRecord
 
   def min_rating
     reviews.minimum(:rating) || 0
+  end
+
+  def co_author(author)
+    authors.where.not(name: author.name)
   end
 
 end

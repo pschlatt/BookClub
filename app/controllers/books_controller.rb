@@ -1,7 +1,5 @@
 class BooksController < ApplicationController
 
-
-
   def index
     @books = Book.all
     @top_books_list = Book.top_books
@@ -44,6 +42,12 @@ class BooksController < ApplicationController
     redirect_to book_path(@book)
   end
 
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to books_path
+  end
+
   private
 
   def book_params
@@ -53,8 +57,4 @@ class BooksController < ApplicationController
   def author_params
     params.permit(:authors)
   end
-
-
-
-
 end
