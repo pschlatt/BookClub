@@ -2,6 +2,7 @@
 
 <section id="author-books" >
   <% @author.books.each do |book| %>
+
     <h4><%= book.title %></h4>
 
     <% book.co_author(@author).each do |author| %>
