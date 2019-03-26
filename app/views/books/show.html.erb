@@ -1,4 +1,11 @@
+
 <%= link_to "Delete Book", book_path(@book), method: :delete %>
+
+
+
+<li class="nav-item">
+  <a class="nav-link" ><%= link_to "Add New Review", new_book_review_path(@book)%></a>
+</li>
 
 <section class="book-stats">
   <h2>Book Stats</h2>
