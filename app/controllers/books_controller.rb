@@ -40,7 +40,6 @@ class BooksController < ApplicationController
       author_params[:authors].split(',').each do |author_param|
         @book.authors.find_or_create_by(name: author_param.strip)
       end
-
     end
     redirect_to book_path(@book)
   end
@@ -49,7 +48,7 @@ class BooksController < ApplicationController
 
   def book_params
    params.require(:book).permit(:title,:number_of_pages,:publish_year)
- end
+  end
 
   def author_params
     params.permit(:authors)
