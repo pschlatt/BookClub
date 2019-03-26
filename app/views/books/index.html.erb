@@ -55,8 +55,8 @@
     <h2><%= link_to book.title, book_path(book) %></h2>
     <p>Average Rating: <%= book.average_rating.round(2)%></p>
     <p>Total Reviews: <%= book.total_reviews %></p>
+    <p>Author(s):</p>
     <% book.authors.each do |author| %>
-      <p>Author(s):</p>
       <ul> <%= link_to author.name, author_path(author) %> </ul>
     <% end %>
     <p>Pages: <%= book.number_of_pages %></p>
