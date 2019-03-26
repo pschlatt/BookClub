@@ -59,4 +59,8 @@ class Book < ApplicationRecord
     authors.where.not(name: author.name)
   end
 
+  def top_book_review
+    reviews.order(:rating).last
+  end
+
 end
