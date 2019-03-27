@@ -1,11 +1,11 @@
 <h1> <%= @user_identifier %></h1>
+<% @reviews.each do |review| %>
+  <h3>Book Title: <%= link_to review.book.title, book_path(review.book) %> </h3>
+  <img style="width: 10%" src="<%= review.book.cover %>">
+  <p>Review Title: <%= review.title %> </p>
+  <p>Rating:  <%= review.rating %> </p>
+  <p>Review Text: <%= review.review_text %> </p>
+  <p>Time: <%= review.created_at %> </p>
 
-<p> <% @books.each do |book| %> </p>
-<p>Book Title: <%= book.title %> </p>
-<p> <% @reviews.each do |review| %> </p>
-<p>Review Title: <%= review.title %> </p>
-<p>Rating:  <%= review.rating %> </p>
-<p>Review Text: <%= review.review_text %> </p>
-<p> <%  %> </p>
-<% end %>
+  <hr/>
 <% end %>

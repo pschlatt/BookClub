@@ -4,19 +4,19 @@
 <section class="stats-bar">
   <div id="stats-bar-highest">
     <% @top_books_list.each do |book| %>
-      <li><%=book.title%> Highest Rating: <%=book.max_rating%></li>
+      <li><%= link_to book.title, book_path(book)%> Highest Rating: <%=book.max_rating%></li>
     <% end %>
   </div>
 
   <div id="stats-bar-worst">
     <% @worst_books_list.each do |book| %>
-      <li><%=book.title%> Worst Rating: <%=book.min_rating%></li>
+      <li><%=link_to book.title, book_path(book)%> Worst Rating: <%=book.min_rating%></li>
     <% end %>
   </div>
 
   <div id="top-three-users-and-review-count">
     <% @top_reviewers_list.each do |reviewer| %>
-      <li>Reviewer: <%=reviewer[0]%> Total Reviews: <%=reviewer[1]%></li>
+      <li>Reviewer: <%= link_to reviewer[0], '/reviews.1'%> Total Reviews: <%=reviewer[1]%></li>
     <% end %>
   </div>
 
