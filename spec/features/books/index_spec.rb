@@ -44,6 +44,7 @@ RSpec.describe "user_index", type: :feature do
     end
 
     within "#book-#{@book_1.id}" do
+
       expect(page).to have_content(@book_1.title)
       expect(page).to have_content(@book_1.number_of_pages)
       expect(page).to have_content("Marcel Proust")
@@ -55,7 +56,9 @@ RSpec.describe "user_index", type: :feature do
   it 'user can click title of book and go to showpage for book 1' do
     visit books_path
 
-    click_on @book_1.title
+    within "#book-#{@book_1.id}" do
+      click_on @book_1.title
+    end
 
     expect(page).to have_content 'In Search Of Lost Time'
     expect(page).to have_content 'Author(s): Marcel Proust'
@@ -65,7 +68,9 @@ RSpec.describe "user_index", type: :feature do
   it 'user can click title of book and go to showpage for book 1' do
     visit books_path
 
-    click_on @book_2.title
+    within "#book-#{@book_2.id}" do
+      click_on @book_2.title
+    end
 
     expect(page).to have_content 'Don Quixote'
     expect(page).to have_content 'Author(s): Miguel de Cervantes'
@@ -78,12 +83,12 @@ RSpec.describe "user_index", type: :feature do
     visit books_path
 
     within "#stats-bar-highest" do
-      expect(page.all('li')[0]).to have_content(@book_1.title)
-      expect(page.all('li')[0]).to have_content(@book_1.max_rating)
-      expect(page.all('li')[1]).to have_content(@book_2.title)
-      expect(page.all('li')[1]).to have_content(@book_2.max_rating)
-      expect(page.all('li')[2]).to have_content(@book_3.title)
-      expect(page.all('li')[2]).to have_content(@book_3.max_rating)
+      expect(page.all('li')[0]).to have_content(@book_3.title)
+      expect(page.all('li')[0]).to have_content(@book_3.max_rating)
+      expect(page.all('li')[1]).to have_content(@book_1.title)
+      expect(page.all('li')[1]).to have_content(@book_1.max_rating)
+      expect(page.all('li')[2]).to have_content(@book_2.title)
+      expect(page.all('li')[2]).to have_content(@book_2.max_rating)
     end
   end
 
@@ -92,12 +97,12 @@ RSpec.describe "user_index", type: :feature do
     visit books_path
 
     within "#stats-bar-worst" do
-      expect(page.all('li')[0]).to have_content(@book_4.title)
-      expect(page.all('li')[0]).to have_content(@book_4.min_rating)
+      expect(page.all('li')[0]).to have_content(@book_2.title)
+      expect(page.all('li')[0]).to have_content(@book_2.min_rating)
       expect(page.all('li')[1]).to have_content(@book_1.title)
       expect(page.all('li')[1]).to have_content(@book_1.min_rating)
-      expect(page.all('li')[2]).to have_content(@book_2.title)
-      expect(page.all('li')[2]).to have_content(@book_2.min_rating)
+      expect(page.all('li')[2]).to have_content(@book_3.title)
+      expect(page.all('li')[2]).to have_content(@book_3.min_rating)
     end
   end
 

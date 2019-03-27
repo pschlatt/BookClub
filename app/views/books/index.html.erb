@@ -1,6 +1,5 @@
 <h1>All Books</h1>
 
-
 <section class="stats-bar">
   <div id="stats-bar-highest">
     <% @top_books_list.each do |book| %>
@@ -42,13 +41,6 @@
     </form>
 
   </section>
-
-  <!-- <input type="button" name="test" value="average rating in ascending order" onclick="">
-  <input type="button" name="test" value="average rating in descending order" onclick="">
-  <input type="button" name="test" value="number of pages in ascending order" onclick="">
-  <input type="button" name="test" value="number of pages in descending order" onclick="">
-  <input type="button" name="test" value="number of reviews in ascending order" onclick="">
-  <input type="button" name="test" value="number of reviews in descending order" onclick=""> -->
 
 <% @books.each do |book| %>
   <section id="book-<%=book.id%>">
