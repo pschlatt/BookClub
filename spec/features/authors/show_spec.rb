@@ -27,7 +27,6 @@ RSpec.describe "author showpage", type: :feature do
   it "shows a page with author information" do
 
     visit author_path(@author_1)
-    # save_and_open_page
 
     expect(current_path).to eq(author_path(@author_1))
     expect(page).to have_content(@author_1.name)
@@ -53,5 +52,18 @@ RSpec.describe "author showpage", type: :feature do
         expect(page).to have_content(@review_2.username)
       end
     end
+  end
+
+  it "deletes an author and returns to book index page" do
+
+    visit author_path(@author_2)
+
+    click_link "Delete Author"
+
+    expect(current_path).to eq(books_path)
+    expect(page).to_not have_content(@author_2.name)
+    expect(page).to_not have_content(@book_1.title)
+    expect(page).to have_content(@author_1.name)
+    # ?test @author_1 was not deleted if no book
   end
 end
