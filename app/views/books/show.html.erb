@@ -36,7 +36,7 @@
  <% end %>
 <p>Pages: <%= @book.number_of_pages %></p>
 <p>Year: <%= @book.publish_year %></p>
-<img src="<%= @book.cover %>">
+<img src="<%= @book.cover || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd3cgsv8lMoNU4g8dDN1hUqKlXAR3DTITUd5rl1tMuYds_wAP6" %>">
 
 <h2>Reviews</h2>
 <%@book.reviews.each do |review| %>
@@ -45,4 +45,5 @@
 <p>Reviewer: <%= link_to review.username, reviews_path(review) %></p>
 <p>Rating: <%= review.rating %></p>
 <p><%= review.review_text %></p>
+<p><%= review.created_at%></p>
 <% end  %>

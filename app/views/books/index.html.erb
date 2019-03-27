@@ -15,7 +15,7 @@
 
   <div id="top-three-users-and-review-count">
     <% @top_reviewers_list.each do |reviewer| %>
-      <li>Reviewer: <%=reviewer[0]%> Total Reviews: <%=reviewer[1]%></li>
+      <li>Reviewer: <%= link_to reviewer[0], '/reviews.1'%> Total Reviews: <%=reviewer[1]%></li>
     <% end %>
   </div>
 
