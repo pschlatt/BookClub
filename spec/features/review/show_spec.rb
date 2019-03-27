@@ -77,7 +77,7 @@ RSpec.describe "review_show", type: :feature do
     within("#top-reviews-one-book") do
       click_on "Userone"
     end
-    binding.pry
+    
     expect(current_path).to eq(reviews_path(@review_26))
     expect(page).to have_content("Userone")
     expect(page).to have_content(@book_3.title)

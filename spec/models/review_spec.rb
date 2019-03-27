@@ -36,7 +36,7 @@ RSpec.describe Review, type: :model do
     end
 
     it ".top_reviewers" do
-      expect(Review.top_reviewers).to eq([["UserYou1", 3], ["UserYou2", 3], ["UserYou3", 2]])
+      expect(Review.top_reviewers).to eq([["UserYou2", 3], ["UserYou4", 1], ["UserYou3", 2]])
     end
   end
 

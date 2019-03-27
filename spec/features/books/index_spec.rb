@@ -111,10 +111,10 @@ RSpec.describe "user_index", type: :feature do
     visit books_path
 
     within "#top-three-users-and-review-count" do
-      expect(page.all('li')[0]).to have_content("UserYou1")
+      expect(page.all('li')[0]).to have_content("UserYou2")
       expect(page.all('li')[0]).to have_content("3")
-      expect(page.all('li')[1]).to have_content("UserYou2")
-      expect(page.all('li')[1]).to have_content("3")
+      expect(page.all('li')[1]).to have_content("UserYou4")
+      expect(page.all('li')[1]).to have_content("1")
       expect(page.all('li')[2]).to have_content("UserYou3")
       expect(page.all('li')[2]).to have_content("2")
     end
