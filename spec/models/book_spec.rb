@@ -18,7 +18,7 @@ RSpec.describe Book, type: :model do
       @book_3 = Book.create!(title: "Book 3", number_of_pages: 300, publish_year: 2000, cover:"https://images-na.ssl-images-amazon.com/images/I/51wTLf4JVwL._SX384_BO1,204,203,200_.jpg")
       @book_4 = Book.create!(title: "Book 4", number_of_pages: 100, publish_year: 2010, cover:"https://images-na.ssl-images-amazon.com/images/I/51wTLf4JVwL._SX384_BO1,204,203,200_.jpg")
       @book_1.reviews.create!(title: "Book 1 Review", rating: 5, review_text: "This is book 1.", username: "Oink1")
-      @book_1.reviews.create!(title: "Book 1 Review 2", rating: 3, review_text: "This is another review for 1.", username: "Pig1")
+      @book_1.reviews.create!(title: "Book 1 Review 2", rating: 2, review_text: "This is another review for 1.", username: "Pig1")
       @book_1.reviews.create!(title: "Book 1 Review 3", rating: 1, review_text: "This is yet another review for 1.", username: "Pig2")
       @book_2.reviews.create!(title: "Book 2 Review", rating: 3, review_text: "This is book 2.", username: "Oink2")
       @book_3.reviews.create!(title: "Book 3 Review", rating: 1, review_text: "This is book 3.", username: "Oink3")
@@ -26,13 +26,11 @@ RSpec.describe Book, type: :model do
     end
 
     it ".top_books" do
-      #@book_1 has two top ratings, but should only display one
-      expect(Book.top_books).to eq([@book_1, @book_4, @book_2])
+      expect(Book.top_books).to eq([@book_4, @book_2, @book_1])
     end
 
     it ".worst_books" do
-      #@book_1 has two top ratings, but should only display one
-      expect(Book.worst_books).to eq([@book_1, @book_3, @book_2])
+      expect(Book.worst_books).to eq([@book_3, @book_1, @book_2])
     end
   end
 

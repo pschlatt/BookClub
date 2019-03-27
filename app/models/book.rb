@@ -8,19 +8,19 @@ class Book < ApplicationRecord
   has_many :reviews, dependent: :destroy
 
   def self.top_books
-    books = Book.all
-    books_by_rating = books.sort_by do |book|
-      book.max_rating
-    end
-    books_by_rating.reverse.first(3)
+    joins(:reviews)
+    .select("books.*, AVG(reviews.rating) AS avg_rating")
+    .group(:id)
+    .order("avg_rating DESC")
+    .limit(3)
   end
 
   def self.worst_books
-    books = Book.all
-    books_by_rating = books.sort_by do |book|
-      book.min_rating
-    end
-    books_by_rating.first(3)
+    joins(:reviews)
+    .select("books.*, AVG(reviews.rating) AS avg_rating")
+    .group(:id)
+    .order("avg_rating")
+    .limit(3)
   end
 
   def self.sort_by_ascending_pages

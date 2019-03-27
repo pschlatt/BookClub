@@ -8,7 +8,6 @@ class AuthorsController < ApplicationController
     @author = Author.find(params[:id])
     @author.books.each {|book| book.destroy}
     @author.destroy
-    binding.pry
     redirect_to books_path
   end
 
