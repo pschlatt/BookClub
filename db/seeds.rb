@@ -1,3 +1,5 @@
+
+
 BookAuthor.destroy_all
 Review.destroy_all
 Book.destroy_all

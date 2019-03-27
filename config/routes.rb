@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     resources :books, only: [:destroy]
   end
   
+  resources :reviews, only: [:index]
+
   root :to => "welcome#index"
 end
